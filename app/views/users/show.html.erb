@@ -1,0 +1,49 @@
+<% if current_user.id == @user.id %>
+  <%= render "users/form", user: @user %>
+<% end %>
+<% if current_user.id != @user.id %>
+  <tr>
+    <td>
+      <table border="0">
+        <tbody>
+        <tr class="athing">
+          <td valign="top">user:</td>
+          <td>
+            <a href="/users/<%= @user.id %>" class="hnuser"><%= @user.email %></a>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">created:</td>
+          <td>
+            <%= @user.created_at.localtime %>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">karma:</td>
+          <td><%= @user.karma %></td>
+        </tr>
+        <tr>
+          <td valign="top">about:</td>
+          <td style="overflow:hidden"><%= @user.about %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <a href="submitted?id=ingve"><u>submissions</u></a>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><a href="threads?id=ingve"><u>comments</u></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><a href="favorites?id=ingve"><u>favorites</u></a></td>
+        </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+    </td>
+  </tr>
+<% end %>

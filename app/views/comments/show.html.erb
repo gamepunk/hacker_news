@@ -1,0 +1,61 @@
+<% provide(:title, "回复") %>
+<tr>
+  <td></td>
+</tr>
+<tr>
+  <td>
+  <table class="fatitem" border="0">
+    <tbody>
+    <tr class="athing" id="36097189">
+      <td class="ind"></td>
+      <td valign="top" class="votelinks">
+        <center>
+          <a id="up_36097189" class="clicky" href="vote?id=36097189&amp;how=up&amp;auth=142f79f6e1d3ad73924f6adfc24b2e508e18be21&amp;goto=reply%3Fid%3D36097189%26goto%3Ditem%253Fid%253D36096652%252336097189#36097189">
+            <div class="votearrow" title="upvote"></div>
+          </a>
+        </center>
+      </td>
+      <td class="default">
+        <div style="margin-top:2px; margin-bottom:-10px;">
+          <span class="comhead">
+          <a href="user?id=Jun8" class="hnuser"><%= @comment.user.email %></a> 发布于
+      <span class="age" title="<%= @comment.created_at %>">
+        <%= time_tag @comment.created_at, "data-local": "time-ago" %>
+      </span>
+      <span id="unv_36097189"></span>
+      <span class="navs"> |
+        <a href="<%=  %>">parent</a> |
+        <a href="context?id=36097189" rel="nofollow">context</a>
+        <span class="onstory"> |  on:
+          <a href="<%= item_url(@comment.item) %>"><%= @comment.item.title %></a>
+        </span>
+      </span>
+    </span>
+    </div>
+      <br>
+      <div class="comment">
+        <span class="commtext c00">
+          <%= @comment.text %>
+          <div class="reply"></div>
+        </span>
+      </div>
+    </td>
+    </tr>
+<tr style="height:10px"></tr>
+    <tr><td colspan="2"></td>
+      <td>
+        <%= form_with model: [ @comment.item, Comment.new ] do |form| %>
+
+          <%= form.hidden_field :parent_comment_id, value: @comment.id %>
+
+          <%= form.text_area :text, rows: "8", cols: "90", wrap: "virtual" %>
+          <br>
+          <br>
+          <%= form.submit value: "回复" %>
+        <% end %>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  </td>
+</tr>

@@ -1,0 +1,38 @@
+<tr class="athing" id="36092159">
+  <td align="right" valign="top" class="title">
+    <span class="rank"><%= item.id %>.</span>
+  </td>
+  <td valign="top" class="votelinks">
+    <center>
+      <a id="up_36092159" href="/vote?id=36092159&amp;how=up&amp;goto=news">
+        <div class="votearrow" title="upvote"></div>
+      </a>
+    </center>
+  </td>
+  <td class="title">
+    <span class="titleline">
+      <a href="<%= item.url %>"><%= item.title %></a>
+      <span class="sitebit comhead">
+        (<a href="from?site=<%= item.host %>"><span class="sitestr"><%= item.host %></span></a>)
+      </span></span>
+  </td>
+</tr>
+<tr>
+  <td colspan="2"></td>
+  <td class="subtext">
+    <span class="subline">
+    <span class="score" id="score_36092159"><%= item.score %> 点</span> |
+    <a href="/users/<%= item.user.id %>" class="hnuser"><%= item.user.email %></a> 发布于
+    <span class="age" title="<%= item.created_at %>">
+      <a href="<%= item_path(item) %>"><%= time_tag item.created_at, "data-local": "time-ago" %></a>
+    </span>
+    <span id="unv_36092159"></span> |
+    <a href="<%= item_path(item) %>"><%= item.comments.count %> 条评论</a>
+
+      <% if user_signed_in? && (can? :destory, Item) %>
+      | <%= link_to "删除", item_path(item), data: { turbo_method: :delete } %>
+      <% end %>
+  </span>
+  </td>
+</tr>
+<tr class="spacer" style="height:5px"></tr>

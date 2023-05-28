@@ -1,0 +1,61 @@
+<tr class="athing comtr" id="36094566">
+  <td>
+    <table border="0">
+      <tbody>
+      <tr>
+        <% if comment.parent_comment_id == nil %>
+        <td class="ind" indent="0">
+          <img src="/s.gif" height="1" width="0">
+        </td>
+        <% else %>
+        <td class="ind" indent="1">
+          <img src="/s.gif" height="1" width="40">
+        </td>
+        <% end %>
+        <td valign="top" class="votelinks">
+          <center>
+            <a id="up_36094566" class="clicky" href="vote?id=36094566&amp;how=up&amp;auth=fd10853cabab3df41078c6a4a495ba592b52fa83&amp;goto=item%3Fid%3D36092718#36094566">
+              <div class="votearrow" title="upvote"></div>
+            </a>
+          </center>
+        </td>
+        <td class="default">
+          <div style="margin-top:2px; margin-bottom:-10px;">
+            <span class="comhead">
+          <a href="user?id=systems_glitch" class="hnuser"><%= comment.user.email %></a> 发布于
+              <span class="age" title="<%= comment.created_at %>">
+                <a href="<%= item_path(comment.item) %>">
+                  <%= time_tag comment.created_at, "data-local": "time-ago" %>
+                </a>
+              </span>
+              <span id="<%= comment.id %>"></span>
+              <span class="navs"> |
+                <a href="#36094597" class="clicky" aria-hidden="true">prev</a> |
+                <a href="#36093458" class="clicky" aria-hidden="true">next</a>
+                <a class="togg clicky" id="36094566" n="1" href="javascript:void(0)">[–]</a>
+                <span class="onstory"></span>
+              </span>
+            </span>
+          </div>
+          <br>
+          <div class="comment">
+            <span class="commtext c00">
+              <%= comment.text %>
+                <div class="reply">
+                  <p>
+                    <font size="1">
+                      <a href="<%= item_comment_path(comment.item, comment) %>">回复</a>
+                      <% if user_signed_in? && (can? :destory, Comment) %>|
+                        <%= link_to "删除", item_comment_path(comment.item, comment), data: { turbo_method: :delete } %>
+                      <% end %>
+                    </font>
+                  </p>
+                </div>
+            </span>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>

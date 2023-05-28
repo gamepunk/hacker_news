@@ -1,0 +1,47 @@
+<%= form_with(model: item) do |form| %>
+
+  <input type="hidden" name="fnid" value="NWlGJZka8zg1HzsqLlzXvD">
+  <input type="hidden" name="fnop" value="submit-page">
+  <script type="text/javascript">function tlen(el) { var n = el.value.length - 80; el.nextSibling.innerText = n > 0 ? n + ' too long' : ''; }</script>
+  <table border="0">
+    <tbody>
+    <tr>
+      <td>Title:</td>
+      <td>
+        <%= form.text_field :title, size: "50", autofocus: "t", oninput: "tlen(this)", onfocus: "tlen(this)" %>
+        <span style="margin-left:10px"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>Url:</td>
+      <td>
+        <%= form.text_field :url, size: "50" %>
+      </td>
+    </tr>
+    <tr>
+      <td>Text:</td>
+      <td>
+        <%= form.text_area :text, rows: "4", cols: "49", wrap: "virtual" %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <%= form.submit value: "提交" %>
+      </td>
+    </tr>
+    <tr style="height:20px"></tr>
+    <tr>
+      <td></td>
+      <td>将 Url 留空以提交问题进行讨论。如果没有 Url，文本将出现在主题的顶部。如果有 Url，文本是可选的。
+        <br>
+        <br>您也可以通过 <a href="/bookmarklet" rel="nofollow"><u>Bookmarklet</u></a> 提交。
+      </td>
+    </tr>
+    </tbody>
+  </table>
+<% end %>
